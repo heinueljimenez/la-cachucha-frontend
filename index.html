@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cachucha Graphic | Impresión & Bordados Premium RD</title>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeVrqAsAAAAAHf6Hgeu-XKJoxfgDuOR65a7DvEG"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+
+        /* ESTILOS */
+        
+        .header-top { background-color: #000; color: #fff; font-size: 11px; }
+
+        .nav-main { background-color: #fff; border-bottom: 1px solid #eee; }
+        /* Transiciones y Sombras */
+        .header-top { background-color: #000; color: #fff; font-size: 11px; }
+        .nav-main { background-color: #fff; border-bottom: 1px solid #eee; transition: all 0.3s ease; }
+
+        /* --- MODO OSCURO --- */
+        body.dark { background-color: #0f172a; color: #f1f5f9; }
+        
+        .dark .nav-main { background-color: #1e293b !important; border-bottom: 1px solid #334155; }
+        
+        /* Esto obliga a TODOS los textos a ponerse blancos/claros */
+        .dark h1, .dark h2, .dark h3, .dark h4, .dark span, .dark p, .dark label, .dark div { 
+            color: #f1f5f9 !important; 
+        }
+        
+        /* Las secciones cambian de fondo */
+        .dark section.bg-white { background-color: #1e293b !important; }
+        .dark section.bg-slate-50 { background-color: #0f172a !important; }
+        
+        /* Las tarjetas y el cotizador */
+        .dark .item-row, .dark .bg-white.shadow-sm, .dark .product-card { 
+            background-color: #1e293b !important; 
+            border-color: #334155 !important; 
+        }
+
+        /* Inputs del cotizador: Fondo oscuro, letras blancas */
+        .dark .service-select, .dark .quantity-input { 
+            background-color: #0f172a !important; 
+            color: white !important; 
+            border: 1px solid #475569 !important; 
+        }
+        
+        /* Carrusel Pantalla Completa (Full Width) */
+        .carousel-wrapper { position: relative; width: 100%; overflow: hidden; height: 600px; }
+        .carousel-slide { 
+            display: flex; 
+            width: 500%; /* Para 5 imágenes */
+            height: 100%; 
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .carousel-item { 
+            width: 20%; 
+            height: 100%; 
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        .carousel-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.8) 100%);
+        }
+        
+        /* Puntos de Navegación */
+        .carousel-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+        }
+        .dot { 
+            width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.3); 
+            cursor: pointer; transition: all 0.3s;
+        }
+        .dot.active { background: #2563eb; width: 30px; border-radius: 20px; }
+        
+        /* --- MEJORA DE LEGIBILIDAD Y EFECTO CRISTAL --- */
+        .carousel-item .carousel-overlay {
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.7) 100%);
+        }
+
+        .carousel-item h2 {
+            font-weight: 900;
+            line-height: 1;
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.8);
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.5));
+        }
+
+        .carousel-item p {
+            background: rgba(0, 0, 0, 0.5) !important;
+            padding: 8px 16px !important;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 15px;
+            
+            /* EFECTO DE DESENFOQUE (BLUR) REFORZADO */
+            -webkit-backdrop-filter: blur(10px) !important;
+            backdrop-filter: blur(10px) !important;
+            
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white !important;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-style: italic;
+        }
+        
+        /* Slider de Productos */
+        .product-slider-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 20px;
+        }
+        .product-card {
+            min-width: calc(100% / 4); /* Muestra 4 productos en PC */
+        }
+        @media (max-width: 1024px) { .product-card { min-width: calc(100% / 2); } }
+        @media (max-width: 640px) { .product-card { min-width: 100%; } }
+
+        .footer-tek { background: #000; color: #fff; }
+        .footer-col-title { font-weight: 900; text-transform: uppercase; margin-bottom: 20px; color: #fff; }
+        
+        /* Animación Fade In */
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Estilos específicos para la nueva sección de Ofertas */
+        .offers-container { position: relative; }
+        .offers-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        .offers-slider::-webkit-scrollbar { display: none; }
+        .offer-card {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+        }
+        @media (min-width: 768px) { .offer-card { flex: 0 0 50%; } }
+        @media (min-width: 1024px) { .offer-card { flex: 0 0 33.333%; } }
+
+        /* Navegación para Mouse en Ofertas */
+        .nav-offer {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(37, 99, 235, 0.8);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 30;
+            opacity: 0;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .offers-container:hover .nav-offer { opacity: 1; }
+        .nav-offer:hover { background: #000; scale: 1.1; }
+        .nav-offer.prev { left: 10px; }
+        .nav-offer.next { right: 10px; }
+    </style>
+</head>
+<body class="selection:bg-blue-600 selection:text-white">
+
+    <div class="header-top py-2 px-6 md:px-12 flex justify-between items-center">
+        <div class="flex items-center gap-6">
+            <div class="flex gap-4">
+                <a href="https://www.instagram.com/lacachuchagraphic" target="_blank" class="hover:text-blue-500"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/18099140210" target="_blank" class="hover:text-blue-500"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <span class="hidden md:inline text-white/50">|</span>
+            <div class="hidden md:flex items-center gap-2">
+                <i class="fas fa-phone-alt text-blue-500"></i> 809-914-0210
+            </div>
+            <div class="hidden md:flex items-center gap-2">
+                <i class="fas fa-envelope text-blue-500"></i> 
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@lacachuchagraphic.com" target="_blank" class="hover:underline">info@lacachuchagraphic.com</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div id="statusBadge" class="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full uppercase font-black text-[9px] tracking-widest">
+                <span class="relative flex h-2 w-2">
+                    <span id="statusDotPing" class="animate-ping absolute h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span id="statusDot" class="relative rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span id="statusText">Abierto</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-main sticky top-0 z-50 py-4 px-6 md:px-12 flex justify-between items-center shadow-sm">
+        <div class="flex items-center gap-3">
+            <img src="LOGO_CACHUCHA.png" class="h-10 w-auto" alt="Logo">
+            <div class="flex flex-col">
+                <span class="font-black text-lg tracking-tighter uppercase leading-none">La Cachucha Graphic</span>
+                <span class="text-[8px] font-bold text-blue-600 tracking-[0.3em]">SERVICIOS GRÁFICOS</span>
+                <button onclick="toggleDarkMode()" class="ml-4 p-2 rounded-full hover:bg-slate-100 transition-all" id="dark-mode-btn">
+    <i class="fas fa-moon text-slate-600" id="dark-icon"></i>
+</button>
+            </div>
+        </div>
+        
+        <div class="hidden lg:flex items-center gap-8 font-black text-[11px] uppercase tracking-widest">
+            <a href="#productos-slider" class="hover:text-blue-600 transition-colors">Productos</a>
+            <a href="#cotizador" class="text-blue-600">Tienda</a>
+            <a href="#ofertas-especiales" class="hover:text-blue-600 transition-colors">Ofertas</a>
+            <a href="#marcas" class="hover:text-blue-600 transition-colors">Marcas</a>
+            <a href="#contacto" class="hover:text-blue-600 transition-colors">Contacto</a>
+        </div>
+        <button onclick="location.href='#cotizador'" class="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-black text-[10px] uppercase tracking-widest hover:bg-slate-900 transition-all shadow-lg shadow-blue-600/20">
+    Cotizar Ahora
+</button>
+    </nav>
+
+    <section class="carousel-wrapper">
+        <div class="carousel-slide" id="mainCarousel">
+            <div class="carousel-item" style="background-image: url('M-TEXTIL.png');">
+                <div class="carousel-overlay flex flex-col justify-center px-12 md:px-24">
+                    <span class="text-blue-500 font-black tracking-[0.4em] mb-4 text-sm">CALIDAD INDUSTRIAL</span>
+                    <h2 class="text-white text-5xl md:text-7xl font-black italic uppercase leading-tight tracking-tighter">DTF TEXTIL <br> DE ALTA GAMA</h2>
+                    <p class="text-white max-w-lg mt-4 font-medium italic">Impresión con colores vibrantes y máxima durabilidad para tus prendas.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('DTF_UV_R.webp');">
+                <div class="carousel-overlay flex flex-col justify-center px-12 md:px-24">
+                    <span class="text-blue-500 font-black tracking-[0.4em] mb-4 text-sm">ADHESIVO ETERNO</span>
+                    <h2 class="text-white text-5xl md:text-7xl font-black italic uppercase leading-tight tracking-tighter">DTF UV <br> PREMIUM</h2>
+                    <p class="text-white max-w-lg mt-4 font-medium italic">Personaliza superficies rígidas con relieve y resistencia extrema.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('GORRA.png');">
+                <div class="carousel-overlay flex flex-col justify-center px-12 md:px-24">
+                    <span class="text-blue-500 font-black tracking-[0.4em] mb-4 text-sm">3D & TRADICIONAL</span>
+                    <h2 class="text-white text-5xl md:text-7xl font-black italic uppercase leading-tight tracking-tighter">BORDADO <br> INDUSTRIAL</h2>
+                    <p class="text-white max-w-lg mt-4 font-medium italic">El acabado más profesional para uniformes y gorras de lujo.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('UV-IMPRESION.png');">
+                <div class="carousel-overlay flex flex-col justify-center px-12 md:px-24">
+                    <span class="text-blue-500 font-black tracking-[0.4em] mb-4 text-sm">POR YARDAS</span>
+                    <h2 class="text-white text-5xl md:text-7xl font-black italic uppercase leading-tight tracking-tighter">IMPRESIÓN <br> UV DTF</h2>
+                    <p class="text-white max-w-lg mt-4 font-medium italic">FORMATO 16X36 PULGADAS.</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('SUBLIMACION_M.jpg');">
+                <div class="carousel-overlay flex flex-col justify-center px-12 md:px-24">
+                    <span class="text-blue-500 font-black tracking-[0.4em] mb-4 text-sm">FULL COLOR</span>
+                    <h2 class="text-white text-5xl md:text-7xl font-black italic uppercase leading-tight tracking-tighter">SUBLIMACIÓN <br> POR METRO</h2>
+                    <p class="text-white max-w-lg mt-4 font-medium italic">Colores que no se sienten al tacto, ideales para poliéster.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="carousel-dots">
+            <div class="dot active" onclick="goSlide(0)"></div>
+            <div class="dot" onclick="goSlide(1)"></div>
+            <div class="dot" onclick="goSlide(2)"></div>
+            <div class="dot" onclick="goSlide(3)"></div>
+            <div class="dot" onclick="goSlide(4)"></div>
+        </div>
+    </section>
+
+    <section id="ofertas-especiales" class="bg-black py-12">
+        <div class="px-6 mb-8">
+            <span class="text-blue-500 font-black tracking-[0.3em] text-[10px] uppercase">Oportunidades únicas</span>
+            <h2 class="text-white text-3xl font-black italic uppercase tracking-tighter">Ofertas <span class="text-blue-600">Flash</span></h2>
+        </div>
+        
+        <div class="offers-container">
+            <button class="nav-offer prev" onclick="scrollOffers(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-offer next" onclick="scrollOffers(1)"><i class="fas fa-chevron-right"></i></button>
+
+            <div class="offers-slider" id="offersSlider">
+                <div class="offer-card border-r border-white/10 bg-zinc-900 group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="DTF-10Y.jpg" alt="Oferta 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-white font-black uppercase italic text-xl">10 YARDAS DTF TEXTIL</h3>
+                        <div class="flex items-center gap-3 mt-2">
+                            <span class="text-white/30 line-through font-bold text-sm">RD$ 3,650</span>
+                            <span class="text-blue-500 font-black text-2xl">RD$ 3,330</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card border-r border-white/10 bg-zinc-900 group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="B-GORRA.png" alt="Oferta 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-white font-black uppercase italic text-xl">Bordado Gorras</h3>
+                        <div class="flex items-center gap-3 mt-2">
+                            <span class="text-white/30 line-through font-bold text-sm">RD$ 450</span>
+                            <span class="text-blue-500 font-black text-2xl">RD$ 325</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card border-r border-white/10 bg-zinc-900 group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="UV-DTF-OFERTA.webp" alt="Oferta 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-white font-black uppercase italic text-xl">5 YARDAS UV DTF</h3>
+                        <div class="flex items-center gap-3 mt-2">
+                            <span class="text-white/30 line-through font-bold text-sm">RD$ 4,500</span>
+                            <span class="text-blue-500 font-black text-2xl">RD$ 4,000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card border-r border-white/10 bg-zinc-900 group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="POLO-BORDADO.png" alt="Oferta 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-white font-black uppercase italic text-xl">10 Polos Bordados</h3>
+                        <div class="flex items-center gap-3 mt-2">
+                            <span class="text-white/30 line-through font-bold text-sm">RD$ 6,500</span>
+                            <span class="text-blue-500 font-black text-2xl">RD$ 5,850</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="offer-card bg-zinc-900 group">
+                    <div class="h-80 overflow-hidden">
+                        <img src="TERMO-T.webp" alt="Oferta 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-white font-black uppercase italic text-xl">Sublimación en Tumbler</h3>
+                        <div class="flex items-center gap-3 mt-2">
+                            <span class="text-white/30 line-through font-bold text-sm">RD$ 850</span>
+                            <span class="text-blue-500 font-black text-2xl">RD$ 650</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos-slider" class="py-24 bg-slate-50 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-blue-600 font-black tracking-widest text-xs uppercase">Catálogo 2026</span>
+                    <h2 class="text-4xl font-black text-slate-900 uppercase italic">Nuestros <span class="text-blue-600">Productos</span></h2>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="prevProduct()" class="bg-white hover:bg-blue-600 hover:text-white text-slate-900 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all border border-slate-200">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="nextProduct()" class="bg-white hover:bg-blue-600 hover:text-white text-slate-900 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all border border-slate-200">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="product-slider-container" id="productContainer">
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200 overflow-hidden">
+                            <img src="PRODUCTO_1.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 1</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200">
+                            <img src="PRODUCTO_2.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 2</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200">
+                            <img src="PRODUCTO_3.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 3</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200">
+                            <img src="PRODUCTO_4.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 4</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200">
+                            <img src="PRODUCTO_5.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 5</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200">
+                            <img src="PRODUCTO_6.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 6</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200">
+                            <img src="PRODUCTO_7.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 7</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200">
+                            <img src="PRODUCTO_8.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 8</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200">
+                            <img src="PRODUCTO_9.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 9</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                    <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl">
+                        <div class="h-64 bg-slate-200">
+                            <img src="PRODUCTO_10.jpg" alt="Producto" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-black uppercase italic text-lg mb-2">Producto 10</h3>
+                            <p class="text-slate-500 text-sm font-medium">Descripción breve del producto de alta calidad aquí.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="marcas" class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-6">
+        
+        <div id="marcas-header" class="text-center mb-12">
+            <span class="text-blue-600 font-black tracking-widest text-[10px] uppercase">Nuestras Alianzas</span>
+            <h2 class="text-3xl font-black text-slate-900 uppercase italic">Marcas <span class="text-blue-600">Aliadas</span></h2>
+        </div>
+
+        <div id="marcas-grid" class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
+            
+            <div onclick="showBrandGallery('FOXIN')" class="flex flex-col items-center group cursor-pointer">
+                <div class="w-28 h-28 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center p-4 shadow-sm group-hover:border-blue-600 transition-all">
+                    <img src="FOXIN.jpg" alt="FOXIN" class="w-full h-full object-contain grayscale group-hover:grayscale-0">
+                </div>
+                <span class="mt-4 font-black uppercase italic text-[10px] tracking-widest text-slate-400 group-hover:text-slate-900">FOXIN</span>
+            </div>
+
+            <div onclick="showBrandGallery('UNICRESE')" class="flex flex-col items-center group cursor-pointer">
+                <div class="w-28 h-28 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center p-4 shadow-sm group-hover:border-blue-600 transition-all">
+                    <img src="UNICRESE.jpg" alt="UNICRESE" class="w-full h-full object-contain grayscale group-hover:grayscale-0">
+                </div>
+                <span class="mt-4 font-black uppercase italic text-[10px] tracking-widest text-slate-400 group-hover:text-slate-900">UNICRESE</span>
+            </div>
+
+            <div onclick="showBrandGallery('YK')" class="flex flex-col items-center group cursor-pointer">
+                <div class="w-28 h-28 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center p-4 shadow-sm group-hover:border-blue-600 transition-all">
+                    <img src="YUCA.jpg" alt="YK YUCA" class="w-full h-full object-contain grayscale group-hover:grayscale-0">
+                </div>
+                <span class="mt-4 font-black uppercase italic text-[10px] tracking-widest text-slate-400 group-hover:text-slate-900">YK YUCA</span>
+            </div>
+
+            <div onclick="showBrandGallery('AREMAR')" class="flex flex-col items-center group cursor-pointer">
+                <div class="w-28 h-28 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center p-4 shadow-sm group-hover:border-blue-600 transition-all">
+                    <img src="AREMAR.jpg" alt="AREMAR" class="w-full h-full object-contain grayscale group-hover:grayscale-0">
+                </div>
+                <span class="mt-4 font-black uppercase italic text-[10px] tracking-widest text-slate-400 group-hover:text-slate-900">AREMAR</span>
+            </div>
+
+            <div onclick="showBrandGallery('BOBCAB')" class="flex flex-col items-center group cursor-pointer">
+                <div class="w-28 h-28 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center p-4 shadow-sm group-hover:border-blue-600 transition-all">
+                    <img src="BOBCAB.jpg" alt="BOBCAB" class="w-full h-full object-contain grayscale group-hover:grayscale-0">
+                </div>
+                <span class="mt-4 font-black uppercase italic text-[10px] tracking-widest text-slate-400 group-hover:text-slate-900">BOBCAB</span>
+            </div>
+
+        </div>
+
+        <div id="brand-gallery-container" class="hidden mt-10">
+            <button onclick="hideBrandGallery()" class="mb-8 flex items-center gap-2 text-slate-900 font-black uppercase italic text-xs hover:text-blue-600 transition-colors">
+                <i class="fas fa-arrow-left text-blue-600"></i> Volver a marcas
+            </button>
+            
+            <div class="text-2xl font-black text-slate-900 uppercase italic mb-8">
+                Productos Destacados: <span id="brand-name-display" class="text-blue-600">---</span>
+            </div>
+
+            <div class="relative group">
+                <div class="overflow-hidden rounded-2xl">
+                    <div id="brand-slider" class="flex transition-transform duration-500 ease-in-out gap-4" style="transform: translateX(0px);">
+                        </div>
+                </div>
+                
+                <button onclick="slideGallery(-1)" class="absolute -left-5 top-1/2 -translate-y-1/2 bg-white w-12 h-12 rounded-full shadow-xl text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all z-10">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button onclick="slideGallery(1)" class="absolute -right-5 top-1/2 -translate-y-1/2 bg-white w-12 h-12 rounded-full shadow-xl text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all z-10">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <section id="cotizador" class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <span class="text-blue-600 font-black tracking-widest text-xs uppercase">Calcula tu presupuesto</span>
+            <h2 class="text-4xl font-black text-slate-900 uppercase italic">Cotizador <span class="text-blue-600">SMART</span></h2>
+      <p class="text-slate-500 font-bold mt-2">Agrega varios servicios sin complicarte.</p>
+</div>
+
+<div class="bg-slate-50 rounded-[2rem] p-8 shadow-inner border border-slate-100">
+    
+    <div class="mb-8 p-6 bg-white rounded-2xl border-2 border-blue-50 shadow-sm transition-all focus-within:border-blue-600">
+        <label for="clientName" class="block text-slate-400 font-black uppercase text-[10px] tracking-[0.2em] mb-3">
+            ¿Con quién tenemos el gusto? <span class="text-red-500">* Obligatorio</span>
+        </label>
+        <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-blue-600">
+                <i class="fas fa-user-circle text-xl"></i>
+            </span>
+            <input type="text" id="clientName" placeholder="Tu nombre o el de tu negocio..." 
+                class="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-xl font-bold text-slate-900 focus:outline-none transition-all placeholder:text-slate-300 placeholder:font-medium">
+        </div>
+    </div>
+
+    <div id="itemsContainer" class="space-y-6">
+        </div>
+
+    <button onclick="addItem()" class="mt-8 flex items-center gap-2 text-slate-900 font-black uppercase italic text-xs hover:text-blue-600 transition-colors">
+        <i class="fas fa-plus-circle text-blue-600 text-lg"></i> Agregar otro artículo o servicio
+    </button>
+            <hr class="my-8 border-slate-200">
+
+            <div class="flex flex-col md:flex-row justify-between items-end gap-8">
+                <div class="flex items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm w-full md:w-auto">
+                    <input type="checkbox" id="expressDelivery" onchange="calculateTotal()" class="w-5 h-5 accent-blue-600">
+                    <label for="expressDelivery" class="font-black uppercase italic text-[10px] tracking-widest">
+                        🚀 Orden Express (+20%) <br>
+                        <span class="text-slate-400 font-medium lowercase italic">Prioridad en producción</span>
+                    </label>
+                </div>
+
+                <div class="text-right w-full md:w-auto">
+                    <p class="text-slate-400 font-black uppercase text-[10px] tracking-[0.2em] mb-1">Total Estimado</p>
+                    <div class="text-5xl font-black text-slate-900 italic tracking-tighter" id="totalDisplay">RD$ 0</div>
+                    <button onclick="sendToWhatsApp()" class="mt-6 w-full bg-blue-600 text-white px-8 py-4 rounded-xl font-black uppercase italic tracking-widest hover:bg-slate-900 transition-all shadow-xl shadow-blue-600/20">
+                        Enviar pedido a WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+   <section class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="bg-white rounded-[3rem] overflow-hidden shadow-2xl border border-slate-100 p-8 flex flex-col md:flex-row gap-12 items-center">
+        <div class="md:w-1/3">
+            <h2 class="text-4xl font-black text-slate-900 mb-6 uppercase italic">Nuestra <span class="text-blue-600">Ubicación</span></h2>
+            <p class="font-bold text-slate-500 leading-relaxed mb-8">Visítanos, estamos ubicados en el corazón de la Zona Colonial.</p>
+            <div class="space-y-4">
+                <p class="flex items-center gap-3 font-black text-xs uppercase italic tracking-widest">
+                    <i class="fas fa-map-marker-alt text-blue-600"></i> Av. Mella 410, Zona Colonial, SD.
+                </p>
+                <p class="flex items-center gap-3 font-black text-xs uppercase italic tracking-widest">
+                    <i class="fas fa-clock text-blue-600"></i> Lun - Vie | 9:00 AM - 5:30 PM <br> Sáb | 9:00 AM - 1:00 PM
+                </p>
+                <a href="https://maps.app.goo.gl/4ZmTbhxBDPV7cdby9" target="_blank" class="inline-block mt-4 text-blue-600 font-black underline uppercase text-[10px] tracking-widest">
+    Abrir en Google Maps
+</a>
+            </div>
+        </div>
+        <div class="md:w-2/3 h-[450px] w-full rounded-[2rem] overflow-hidden border-4 border-slate-50 shadow-inner">
+            <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.5804550882895!2d-69.888566!3d18.471946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaf888f27ab318b%3A0x2020fb70e73cca64!2sAv.%20Mella%20410%2C%20Santo%20Domingo%2010211!5e0!3m2!1ses-419!2sdo!4v1711900000000!5m2!1ses-419!2sdo" 
+    width="100%" 
+    height="100%" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+        </div>
+    </div>
+</section>
+    <footer class="footer-tek pt-20 pb-10 px-6 md:px-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+            <div>
+                <img src="LOGO-CACHUCHA.png" class="h-16 mb-8" alt="Logo">
+                <p class="text-white/50 text-xs leading-relaxed mb-8">En La Cachucha Graphic somos expertos en personalización textil y gráfica con calidad industrial en RD.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-blue-600/20 p-3 rounded-full"><i class="fas fa-phone-alt text-blue-500"></i></div>
+                        <span class="font-black text-sm uppercase italic">(809) 914-0210</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="bg-blue-600/20 p-3 rounded-full"><i class="fas fa-envelope text-blue-500"></i></div>
+                        <span class="font-black text-[10px] uppercase italic">info@lacachuchagraphic.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="footer-col-title">Servicios</h3>
+                <ul class="space-y-3 text-xs font-bold text-white/60 uppercase italic tracking-widest">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">DTF Textil Industrial</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition-colors">DTF UV para Rígidos</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Bordado en Gorras / Polos</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition-colors">Sublimación Profesional</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-col-title">Empresa</h3>
+                <ul class="space-y-3 text-xs font-bold text-white/60 uppercase italic tracking-widest">
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Nuestros Trabajos</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Ubícanos</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition-colors">Preguntas Frecuentes</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition-colors">Términos de Servicio</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-col-title">Suscripción</h3>
+                <div class="flex gap-2 mb-8">
+                    <input type="email" placeholder="Tu email..." class="bg-white/10 border border-white/10 p-3 rounded-lg flex-1 outline-none focus:border-blue-600 text-xs">
+                    <button class="bg-blue-600 p-3 rounded-lg"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <h3 class="footer-col-title">Métodos de Pago</h3>
+                <div class="flex gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+                    <i class="fab fa-cc-visa text-3xl"></i>
+                    <i class="fab fa-cc-mastercard text-3xl"></i>
+                    <i class="fas fa-university text-3xl"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[9px] font-black opacity-30 uppercase tracking-[0.5em]">Copyright © 2026 La Cachucha Graphic</p>
+            <div class="flex gap-6 text-white/30">
+                <a href="https://www.instagram.com/lacachuchagraphic" target="_blank" class="hover:text-blue-500"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/18099140210" target="_blank" class="hover:text-blue-500"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+             <section id="contacto" class="bg-slate-900 py-4 border-t border-blue-600/30">
+    <div class="max-w-7xl mx-auto px-6">
+        <form action="info@lacachuchagraphic.com" method="GET" enctype="text/plain" class="flex flex-col lg:flex-row items-center gap-3 h-auto lg:h-[60px]">
+            
+            <div class="hidden xl:block whitespace-nowrap">
+                <span class="text-blue-500 font-black uppercase italic text-[10px] tracking-widest">Contacto Directo</span>
+            </div>
+
+            <input type="text" name="subject" placeholder="Tu Nombre / Empresa" required
+                class="w-full lg:w-48 bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white text-xs font-bold focus:outline-none focus:border-blue-600 transition-all">
+
+            <input type="text" name="body" placeholder="¿Qué necesitas?" required
+                class="flex-1 w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white text-xs font-bold focus:outline-none focus:border-blue-600 transition-all">
+
+            <button type="submit" 
+                class="w-full lg:w-auto bg-blue-600 hover:bg-white hover:text-blue-600 text-white px-8 py-2 rounded-lg font-black uppercase italic text-[10px] tracking-widest transition-all">
+                Enviar Correo
+            </button>
+            
+        </form>
+    </div>
+</section>
+
+<script>
+        // --- 1. CONFIGURACIÓN Y VARIABLES ---
+        let currentSlide = 0;
+        const totalSlides = 5;
+        let productScroll = 0;
+        let currentGalleryPos = 0;
+
+        const mainCarousel = document.getElementById('mainCarousel');
+        const dots = document.querySelectorAll('.dot');
+        const productContainer = document.getElementById('productContainer');
+        const productCards = document.querySelectorAll('.product-card');
+
+        // Configuración de Precios y Descuentos (Escalable)
+        const SERVICES = {
+            'dtf_textil': { name: 'DTF Textil (22X36)', price: 350, discount: 0.08, threshold: 10 },
+            'dtf_uv': { name: 'DTF UV (16x36")', price: 900, discount: 0.10, threshold: 5 },
+            'bordado_gorra': { name: 'Bordado Gorra', price: 450, discount: 0.20, threshold: 12 },
+            'sublimacion': { name: 'Sublimación Tumbler', price: 850, discount: 0.15, threshold: 10 }
+        };
+
+        // Datos de las Marcas (Galerías)
+        const BRAND_DATA = {
+            'FOXIN': { name: 'FOXIN', products: [{ img: 'yk1.jpg', desc: 'Polo con Bordado 3D' }, { img: 'yk2.jpg', desc: 'Gorra DTF Premium' }, { img: 'yk3.jpg', desc: 'Jersey Sublimado' }] },
+            'UNICRESE': { name: 'UNICRESE', products: [{ img: 'm2_1.jpg', desc: 'Uniforme Empresarial' }, { img: 'm2_2.jpg', desc: 'Bordado Industrial' }] },
+            'YK': { name: 'YK YUCA', products: [{ img: 'm3_1.jpg', desc: 'Gorra Premium' }, { img: 'm3_2.jpg', desc: 'T-shirt Custom' }] },
+            'AREMAR': { name: 'AREMAR', products: [{ img: 'm4_1.jpg', desc: 'Detalle Especial' }] },
+            'BOBCAB': { name: 'BOBCAB', products: [{ img: 'm5_1.jpg', desc: 'Item Colección' }] }
+        };
+
+        // --- 2. CARRUSEL PRINCIPAL (HERO) ---
+        function updateCarousel() {
+            if (!mainCarousel) return;
+            mainCarousel.style.transform = `translateX(-${currentSlide * 20}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+        }
+
+        function goSlide(n) {
+            currentSlide = n;
+            updateCarousel();
+            resetCarouselTimer();
+        }
+
+        let carouselTimer = setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }, 5000);
+
+        function resetCarouselTimer() {
+            clearInterval(carouselTimer);
+            carouselTimer = setInterval(() => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateCarousel();
+            }, 5000);
+        }
+
+        // --- 3. SLIDERS (OFERTAS FLASH Y PRODUCTOS) ---
+        function scrollOffers(direction) {
+            const slider = document.getElementById('offersSlider');
+            if (slider) slider.scrollBy({ left: direction * 300, behavior: 'smooth' });
+        }
+
+        function updateProductSlider() {
+            if (!productContainer || productCards.length === 0) return;
+            const cardWidth = productCards[0].offsetWidth + 20;
+            productContainer.style.transform = `translateX(-${productScroll * cardWidth}px)`;
+        }
+
+        function nextProduct() {
+            const visible = window.innerWidth > 1024 ? 4 : (window.innerWidth > 640 ? 2 : 1);
+            if (productScroll < productCards.length - visible) { 
+                productScroll++; 
+                updateProductSlider(); 
+            }
+        }
+
+        function prevProduct() {
+            if (productScroll > 0) { 
+                productScroll--; 
+                updateProductSlider(); 
+            }
+        }
+
+        // --- 4. SECCIÓN MARCAS Y GALERÍA ---
+        function showBrandGallery(brandKey) {
+            const data = BRAND_DATA[brandKey];
+            if(!data) return;
+            document.getElementById('marcas-grid').classList.add('hidden');
+            document.getElementById('marcas-header').classList.add('hidden');
+            document.getElementById('brand-gallery-container').classList.remove('hidden');
+            document.getElementById('brand-name-display').innerText = data.name;
+            
+            const slider = document.getElementById('brand-slider');
+            slider.innerHTML = data.products.map(p => `
+                <div onclick="openModal('${p.img}', '${p.desc}')" class="min-w-[280px] bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+                    <img src="${p.img}" class="w-full h-64 object-cover">
+                    <p class="p-4 font-black uppercase italic text-sm text-center text-slate-800">${p.desc}</p>
+                </div>`).join('');
+            currentGalleryPos = 0;
+            slider.style.transform = `translateX(0px)`;
+        }
+
+        function hideBrandGallery() {
+            document.getElementById('marcas-grid').classList.remove('hidden');
+            document.getElementById('marcas-header').classList.remove('hidden');
+            document.getElementById('brand-gallery-container').classList.add('hidden');
+        }
+
+        function slideGallery(dir) {
+            const slider = document.getElementById('brand-slider');
+            if(!slider) return;
+            // Limita el scroll para no desplazarse al vacío
+            currentGalleryPos = Math.max(Math.min(currentGalleryPos - (dir * 300), 0), -1200);
+            slider.style.transform = `translateX(${currentGalleryPos}px)`;
+        }
+
+        // --- 5. GESTOS TÁCTILES (MOBILE) ---
+        let startX = 0;
+        document.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; }, {passive: true});
+        document.addEventListener('touchend', e => {
+            let diff = startX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) < 50) return; // Umbral de sensibilidad
+
+            if (e.target.closest('#mainCarousel')) {
+                currentSlide = diff > 0 ? (currentSlide + 1) % totalSlides : (currentSlide - 1 + totalSlides) % totalSlides;
+                updateCarousel(); resetCarouselTimer();
+            } else if (e.target.closest('#productContainer')) {
+                diff > 0 ? nextProduct() : prevProduct();
+            } else if (e.target.closest('#brand-slider')) {
+                slideGallery(diff > 0 ? 1 : -1);
+            }
+        }, {passive: true});
+
+        // --- 6. MOTOR DEL COTIZADOR ---
+        let itemCount = 0;
+        function addItem() {
+            itemCount++;
+            const container = document.getElementById('itemsContainer');
+            if(!container) return;
+            const div = document.createElement('div');
+            div.id = `item-${itemCount}`;
+            div.className = "item-row bg-white p-4 rounded-xl border border-slate-100 mb-4 flex flex-col md:flex-row gap-4 items-center";
+            div.innerHTML = `
+                <select onchange="calculateTotal()" class="service-select flex-1 w-full p-2 bg-slate-50 rounded-lg font-bold">
+                    ${Object.keys(SERVICES).map(k => `<option value="${k}">${SERVICES[k].name}</option>`).join('')}
+                </select>
+                <div class="flex items-center gap-4">
+                    <input type="number" value="1" min="1" oninput="calculateTotal()" class="quantity-input w-24 p-2 bg-slate-50 rounded-lg text-center font-black text-blue-600">
+                    <button onclick="removeItem(${itemCount})" class="text-slate-300 hover:text-red-500 transition-colors"><i class="fas fa-trash"></i></button>
+                </div>`;
+            container.appendChild(div);
+            calculateTotal();
+        }
+
+        function removeItem(id) {
+            if (document.querySelectorAll('.item-row').length > 1) {
+                document.getElementById(`item-${id}`).remove();
+                calculateTotal();
+            }
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            document.querySelectorAll('.item-row').forEach(row => {
+                const s = SERVICES[row.querySelector('.service-select').value];
+                const q = parseInt(row.querySelector('.quantity-input').value) || 0;
+                let price = s.price;
+                if (q >= s.threshold) price *= (1 - s.discount); // Aplicar descuento por volumen
+                total += price * q;
+            });
+            if (document.getElementById('expressDelivery')?.checked) total *= 1.20;
+
+        const disp = document.getElementById('totalDisplay');
+        if (disp) {
+            disp.innerText = `RD$ ${Math.round(total).toLocaleString()}`;
+        }
+    }
+    function sendToWhatsApp() {
+        // 1. Capturamos el nombre
+        const clientName = document.getElementById('clientName').value.trim();
+
+        // 2. Bloqueo de seguridad: Si no hay nombre, no sale el mensaje
+        if (clientName === "") {
+            alert("¡Mano! Por favor, pon tu nombre para saber con quién hablamos. 😎");
+            document.getElementById('clientName').focus();
+            return;
+        }
+
+        // 3. Ejecución de reCAPTCHA v3 (El guachimán de Google)
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LeVrqAsAAAAAHf6Hgeu-XKJoxfgDuOR65a7DvEG', {action: 'submit'}).then(function(token) {
+                
+                // 4. Si Google da el OK, armamos el mensaje profesional
+                let msg = `*COTIZACIÓN: LA CACHUCHA GRAPHIC*%0A%0A`;
+                
+                // Texto plano para que el mensaje llegue perfecto siempre
+                msg += `*Cliente:* ${encodeURIComponent(clientName)}%0A%0A`;
+                msg += `*DETALLE DEL PEDIDO:*%0A`;
+                
+                // Recorremos los productos agregados
+                document.querySelectorAll('.item-row').forEach(row => {
+                    const serviceSelect = row.querySelector('.service-select');
+                    if (serviceSelect) {
+                        const serviceKey = serviceSelect.value;
+                        const name = SERVICES[serviceKey].name;
+                        const qty = row.querySelector('.quantity-input').value;
+                        msg += `• ${qty}x ${name}%0A`;
+                    }
+                });
+
+                // Si hay envío express
+                if (document.getElementById('expressDelivery')?.checked) {
+                    msg += "%0A🚀 *ORDEN EXPRESS (Entrega prioritaria)*%0A";
+                }
+
+                const totalDisplay = document.getElementById('totalDisplay');
+                const finalTotal = totalDisplay ? totalDisplay.innerText : "Consultar";
+                msg += `%0A*Total Estimado:* ${finalTotal}`;
+
+                // 5. Abrimos WhatsApp con el mensaje blindado
+                window.open(`https://wa.me/18099140210?text=${msg}`);
+            });
+        });
+    }
+    
+    // --- 6. ESTADO EN VIVO Y MODAL ---
+    function updateStatus() {
+        const now = new Date();
+        const h = now.getHours();
+        const d = now.getDay();
+        // Lun-Vie: 9am-6pm | Sáb: 9am-1pm
+        const isOpen = (d >= 1 && d <= 5 && h >= 9 && h < 18) || (d === 6 && h >= 9 && h < 13);
+        
+        const dot = document.getElementById('statusDot');
+        const text = document.getElementById('statusText');
+        const ping = document.getElementById('statusDotPing');
+        
+        if(text) text.innerText = isOpen ? "Abierto" : "Cerrado";
+        if(dot) {
+            dot.classList.remove('bg-green-500', 'bg-red-500');
+            dot.classList.add(isOpen ? 'bg-green-500' : 'bg-red-500');
+        }
+        if(ping && !isOpen) ping.classList.add('hidden');
+    }
+
+    function openModal(img, desc) {
+        let modal = document.getElementById('imageModal');
+        if(!modal) {
+            document.body.insertAdjacentHTML('beforeend', `
+                <div id="imageModal" class="hidden fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm">
+                    <button onclick="closeModal()" class="absolute top-6 right-6 text-white text-4xl hover:text-blue-500"><i class="fas fa-times"></i></button>
+                    <div class="max-w-4xl w-full text-center">
+                        <img id="modalImg" src="" class="max-h-[80vh] mx-auto rounded-xl shadow-2xl border border-white/10">
+                        <p id="modalDesc" class="mt-4 text-white text-xl font-bold uppercase italic"></p>
+                    </div>
+                </div>`);
+            modal = document.getElementById('imageModal');
+        }
+        document.getElementById('modalImg').src = img;
+        document.getElementById('modalDesc').innerText = desc;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('imageModal');
+        if(modal) modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    function toggleDarkMode() {
+        const body = document.body;
+        const icon = document.getElementById('dark-icon');
+        
+        body.classList.toggle('dark');
+        
+        if (body.classList.contains('dark')) {
+            icon.classList.replace('fa-moon', 'fa-sun');
+            icon.style.color = '#fbbf24'; 
+        } else {
+            icon.classList.replace('fa-sun', 'fa-moon');
+            icon.style.color = '#475569';
+        }
+    }
+
+    window.onload = () => {
+        updateStatus();
+        if (typeof addItem === "function") addItem(); 
+        window.addEventListener('resize', () => {
+            if (typeof updateProductSlider === "function") updateProductSlider();
+        });
+    };
+    </script>
+</body>
+</html>
