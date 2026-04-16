@@ -622,12 +622,31 @@
 
 <script>
     // --- 1. VARIABLES Y CONFIGURACIÓN ---
-    let SERVICES = {}; // Se llenará desde Strapi
+    let SERVICES = {}; 
     let currentSlide = 0;
     const totalSlides = 5;
     let productScroll = 0;
 
-    // --- 2. FUNCIONES DEL COTIZADOR (¡No las borres!) ---
+    // --- 2. FUNCIONES DEL MODO OSCURO (LA LUNA) ---
+    function toggleDarkMode() {
+        // Cambia la clase en el HTML para que Tailwind actúe
+        document.documentElement.classList.toggle('dark');
+        
+        const icon = document.getElementById('dark-icon');
+        if (icon) {
+            if (document.documentElement.classList.contains('dark')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                icon.style.color = '#facc15'; // Amarillo Sol
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                icon.style.color = '#475569'; // Slate original
+                localStorage.setItem('theme', 'light');
+            }
+        }
+    }
+
+    // --- 3. FUNCIONES DEL COTIZADOR ---
     let itemCount = 0;
     function addItem() {
         itemCount++;
@@ -635,13 +654,13 @@
         if(!container) return;
         const div = document.createElement('div');
         div.id = `item-${itemCount}`;
-        div.className = "item-row bg-white p-4 rounded-xl border border-slate-100 mb-4 flex flex-col md:flex-row gap-4 items-center";
+        div.className = "item-row bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-100 dark:border-slate-700 mb-4 flex flex-col md:flex-row gap-4 items-center transition-colors";
         div.innerHTML = `
-            <select onchange="calculateTotal()" class="service-select flex-1 w-full p-2 bg-slate-50 rounded-lg font-bold">
+            <select onchange="calculateTotal()" class="service-select flex-1 w-full p-2 bg-slate-50 dark:bg-slate-700 dark:text-white rounded-lg font-bold outline-none">
                 ${Object.keys(SERVICES).map(k => `<option value="${k}">${SERVICES[k].name}</option>`).join('')}
             </select>
             <div class="flex items-center gap-4">
-                <input type="number" value="1" min="1" oninput="calculateTotal()" class="quantity-input w-24 p-2 bg-slate-50 rounded-lg text-center font-black text-blue-600">
+                <input type="number" value="1" min="1" oninput="calculateTotal()" class="quantity-input w-24 p-2 bg-slate-50 dark:bg-slate-700 dark:text-white rounded-lg text-center font-black text-blue-600">
                 <button onclick="removeItem(${itemCount})" class="text-slate-300 hover:text-red-500 transition-colors"><i class="fas fa-trash"></i></button>
             </div>`;
         container.appendChild(div);
@@ -667,7 +686,6 @@
             total += price * q;
         });
 
-        // Sumar el 20% en pantalla si el checkbox está marcado
         const express = document.getElementById('expressDelivery');
         if (express && express.checked) {
             total *= 1.20;
@@ -676,7 +694,7 @@
         const disp = document.getElementById('totalDisplay');
         if (disp) disp.innerText = `RD$ ${Math.round(total).toLocaleString()}`;
     }
-    // --- FUNCIÓN PARA ENVIAR A WHATSAPP ---
+
     function sendToWhatsApp() {
         let mensaje = "¡Hola! Me interesa realizar un pedido en Manna Studio:\n\n";
         let total = 0;
@@ -694,7 +712,6 @@
             mensaje += `${index + 1}. *${s.name}*\n   Cantidad: ${q}\n   Subtotal: RD$ ${Math.round(subtotal).toLocaleString()}\n\n`;
         });
 
-        // Aplicar cargo express si está seleccionado
         const express = document.getElementById('expressDelivery');
         if (express && express.checked) {
             total *= 1.20;
@@ -702,11 +719,11 @@
         }
 
         mensaje += `*TOTAL ESTIMADO: RD$ ${Math.round(total).toLocaleString()}*`;
-        
         const url = `https://wa.me/18099140210?text=${encodeURIComponent(mensaje)}`;
         window.open(url, '_blank');
     }
-    // --- 3. ESTADO DEL NEGOCIO (Abierto/Cerrado) ---
+
+    // --- 4. ESTADO DEL NEGOCIO ---
     function updateStatus() {
         const now = new Date();
         const h = now.getHours();
@@ -718,7 +735,7 @@
         if(dot) dot.className = `h-3 w-3 rounded-full ${isOpen ? 'bg-green-500' : 'bg-red-500'}`;
     }
 
-    // --- 4. EL MOTOR DE SINCRONIZACIÓN (Lo que me pasaste) ---
+    // --- 5. MOTOR DE SINCRONIZACIÓN ---
     async function sincronizarTodo() {
         const productContainer = document.getElementById('productContainer');
         const itemsContainer = document.getElementById('itemsContainer');
@@ -746,17 +763,17 @@
 
                 if (productContainer) {
                     productContainer.innerHTML += `
-                        <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-slate-100 group transition-all hover:shadow-xl min-w-[280px]">
+                        <div class="product-card bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md border border-slate-100 dark:border-slate-700 group transition-all hover:shadow-xl min-w-[280px]">
                             <div class="h-64 bg-slate-200 overflow-hidden">
                                 <img src="${imgUrl}" alt="${p.nombre}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             </div>
                             <div class="p-6">
-                                <h3 class="font-black uppercase italic text-lg mb-2 text-slate-800">${p.nombre}</h3>
-                                <p class="text-slate-500 text-sm font-medium mb-4">${p.descripcion || 'Servicio profesional.'}</p>
+                                <h3 class="font-black uppercase italic text-lg mb-2 text-slate-800 dark:text-white">${p.nombre}</h3>
+                                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-4">${p.descripcion || 'Servicio profesional.'}</p>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-blue-600 font-bold">RD$ ${p.precio}</span>
+                                    <span class="text-blue-600 dark:text-blue-400 font-bold">RD$ ${p.precio}</span>
                                     <button onclick="document.getElementById('cotizador').scrollIntoView({behavior:'smooth'})" 
-                                       class="bg-slate-900 text-white text-xs px-4 py-2 rounded-full font-bold uppercase hover:bg-blue-600 transition-colors">
+                                       class="bg-slate-900 dark:bg-blue-600 text-white text-xs px-4 py-2 rounded-full font-bold uppercase hover:bg-blue-600 dark:hover:bg-white dark:hover:text-blue-600 transition-colors">
                                        Cotizar
                                     </button>
                                 </div>
@@ -765,15 +782,18 @@
                 }
             });
             addItem();
-            console.log("✅ Todo sincronizado");
         } catch (error) {
             console.error("❌ Error:", error);
         }
     }
 
+    // --- AL CARGAR LA PÁGINA ---
     window.onload = async () => {
+        // Cargar tema guardado
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
         updateStatus();
-        // Usamos await para asegurarnos de que los servicios carguen antes de hacer nada más
         await sincronizarTodo(); 
     };
 </script>
