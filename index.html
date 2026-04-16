@@ -184,39 +184,39 @@
 </head>
 <body class="selection:bg-blue-600 selection:text-white">
 
-    <div class="header-top py-2 px-6 md:px-12 flex justify-between items-center">
-        <div class="flex items-center gap-6">
-            <div class="flex gap-4">
-                <a href="https://www.instagram.com/mannastudiodr/" target="_blank" class="hover:text-blue-500"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/18099140210" target="_blank" class="hover:text-blue-500"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <span class="hidden md:inline text-white/50">|</span>
-            <div class="hidden md:flex items-center gap-2">
-                <i class="fas fa-phone-alt text-blue-500"></i> 829-907-5619
-            </div>
-            <div class="hidden md:flex items-center gap-2">
-                <i class="fas fa-envelope text-blue-500"></i> 
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@lacachuchagraphic.com" target="_blank" class="hover:underline">info@lacachuchagraphic.com</a>
-            </div>
+    <div class="header-top py-2 px-6 md:px-12 flex justify-between items-center bg-slate-900 dark:bg-[#1a1a1a] text-white transition-colors duration-500">
+    <div class="flex items-center gap-6">
+        <div class="flex gap-4">
+            <a href="https://www.instagram.com/mannastudiodr/" target="_blank" class="hover:text-blue-500"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/18299075619" target="_blank" class="hover:text-blue-500"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <div class="flex items-center gap-4">
-            <div id="statusBadge" class="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full uppercase font-black text-[9px] tracking-widest">
-                <span class="relative flex h-2 w-2">
-                    <span id="statusDotPing" class="animate-ping absolute h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span id="statusDot" class="relative rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span id="statusText">Abierto</span>
-            </div>
+        <span class="hidden md:inline text-white/50">|</span>
+        <div class="hidden md:flex items-center gap-2">
+            <i class="fas fa-phone-alt text-blue-500"></i> 829-907-5619
+        </div>
+        <div class="hidden md:flex items-center gap-2">
+            <i class="fas fa-envelope text-blue-500"></i> 
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@mannastudio.com" target="_blank" class="hover:underline">info@mannastudio.com</a>
         </div>
     </div>
+    <div class="flex items-center gap-4">
+        <div id="statusBadge" class="flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full uppercase font-black text-[9px] tracking-widest">
+            <span class="relative flex h-2 w-2">
+                <span id="statusDotPing" class="animate-ping absolute h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span id="statusDot" class="relative rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span id="statusText">Abierto</span>
+        </div>
+    </div>
+</div>
 
-<nav class="nav-main sticky top-0 z-50 py-4 px-6 md:px-12 flex justify-between items-center shadow-sm bg-white dark:bg-slate-900 transition-colors">
+<nav class="nav-main sticky top-0 z-50 py-4 px-6 md:px-12 flex justify-between items-center shadow-sm bg-white dark:bg-[#121212] transition-colors duration-500">
     <div class="flex items-center gap-4"> 
-        <img src="manna_logo.png" class="h-16 w-auto object-contain" alt="Logo">
+        <img src="manna_logo.png" class="h-16 w-auto object-contain dark:invert dark:brightness-200 transition-all duration-500" alt="Logo">
         
         <div class="flex flex-col justify-center">
             <span class="font-black text-black dark:text-white text-2xl md:text-3xl tracking-tighter uppercase leading-tight">Manna Studio</span>
-            <span class="text-[12px] md:text-[14px] font-bold text-slate-600 dark:text-slate-400 tracking-wide uppercase">Producción Gráfica & Soluciones Visuales</span>
+            <span class="text-[12px] md:text-[14px] font-bold text-slate-600 dark:text-slate-300 tracking-wide uppercase">Producción Gráfica & Soluciones Visuales</span>
         </div>
 
         <button onclick="toggleDarkMode()" class="ml-2 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" id="dark-mode-btn">
@@ -224,7 +224,7 @@
         </button>
     </div>
 
-    <div class="hidden lg:flex items-center gap-8 font-black text-[11px] uppercase tracking-widest text-slate-700 dark:text-slate-200">
+    <div class="hidden lg:flex items-center gap-8 font-black text-[11px] uppercase tracking-widest text-slate-700 dark:text-white">
         <a href="#productos-slider" class="hover:text-blue-600 transition-colors">Productos</a>
         <a href="#cotizador" class="text-blue-600">Tienda</a>
         <a href="#ofertas-especiales" class="hover:text-blue-600 transition-colors">Ofertas</a>
@@ -232,7 +232,7 @@
         <a href="#contacto" class="hover:text-blue-600 transition-colors">Contacto</a>
     </div>
 
-    <button onclick="location.href='#cotizador'" class="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-black text-[10px] uppercase tracking-widest hover:bg-slate-900 transition-all shadow-lg shadow-blue-600/20">
+    <button onclick="location.href='#cotizador'" class="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-black text-[10px] uppercase tracking-widest hover:bg-slate-900 dark:hover:bg-white dark:hover:text-black transition-all shadow-lg shadow-blue-600/20">
         Cotizar Ahora
     </button>
 </nav>
